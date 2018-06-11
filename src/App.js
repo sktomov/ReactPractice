@@ -39,6 +39,7 @@ class App extends Component {
   render() {
     const style = {
       backgroundColor : 'green',
+      color: 'white',
       cursor: 'pointer',
       padding: '8px',
       border: '1px solid blue',
@@ -60,11 +61,15 @@ class App extends Component {
         })}
         </div>
       );
+      style.backgroundColor = 'red';
     }
+
+    let classes = ['red', 'bold'].join(' ');
 
     return (
       <div className="App">
         <h1>Hi I'm React app</h1>
+        <p className={classes}>Cool</p>
         <button style={style}
          onClick={this.showNamesHandler}>Toggle Name</button>
          {persons}

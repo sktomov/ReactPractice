@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 
 
@@ -39,38 +40,18 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = '';
 
     if(this.state.showNames){
       persons= (
         <div>
-        {this.state.persons.map((person, index) => 
-          {return <Person 
-            click={() => this.deleteNameHandler(index)} 
-            name={person.name} 
-            age={person.age} 
-            key={person.id} 
-            changed={(event) => this.switchNameHandler(event, person.id)} /> 
-        })}
+          <Persons persons={this.state.persons} clicked={this.deleteNameHandler} changed={this.switchNameHandler} />
         </div>
       );
-      btnClass = classes.Red;
-    }
-
-    const assignedClasses = [];
-    if(this.state.persons.length <= 2){
-      assignedClasses.push( classes.red );
-    }
-    if(this.state.persons.length <= 1){
-      assignedClasses.push( classes.bold );
     }
 
     return (
         <div className={classes.App}>
-          <h1>Hi I'm React app</h1>
-          <p className={assignedClasses.join(' ')}>Cool</p>
-          <button className={btnClass}
-           onClick={this.showNamesHandler}>Toggle Name</button>
+            <Cockpit persons={this.state.persons} showNamesHandler={this.showNamesHandler} showNames={this.state.showNames} />
            {persons}
         </div>
     );

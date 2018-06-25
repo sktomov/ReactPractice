@@ -51,7 +51,7 @@ class App extends Component {
 
     return (
         <div className={classes.App}>
-            <Cockpit persons={this.state.persons} showNamesHandler={this.showNamesHandler} showNames={this.state.showNames} />
+            <Cockpit title={this.props.title} persons={this.state.persons} showNamesHandler={this.showNamesHandler} showNames={this.state.showNames} />
            {persons}
         </div>
     );
